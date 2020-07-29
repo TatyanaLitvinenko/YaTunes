@@ -5,6 +5,9 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoTimeTotal = document.querySelector('.video-time__total');
     const videoProgress = document.querySelector('.video-progress');
+    const videoFullScreen = document.querySelector('.video-full-screen');
+    const videoVolume = document.querySelector('.video-volume');
+    const videoVolumeDown = document.querySelector('.video-button__mute');
 
     const toggleIcon = () => {
         if (videoPlayer.paused) {
@@ -31,6 +34,24 @@ export const videoPlayerInit = () => {
 
     const addZero = n => n < 10 ? '0' + n : n;
 
+    const toggleVolumeIcon = () => {
+        if (videoPlayer.volume === 0) {
+            videoVolumeDown.classList.remove('fa-volume-down');
+            videoVolumeDown.classList.add('fa-volume-off');
+        } else {
+            videoVolumeDown.classList.add('fa-volume-down');
+            videoVolumeDown.classList.remove('fa-volume-off');
+        }
+    }
+
+    const toggleMute = () => {
+        if (videoPlayer.volume != 0) {
+            videoPlayer.volume = 0;
+        } else {
+            videoPlayer.volume = videoVolume.value / 100;
+        }
+    }
+
     videoPlayer.addEventListener('click', togglePlay);
     videoButtonPlay.addEventListener('click', togglePlay);
 
@@ -56,11 +77,26 @@ export const videoPlayerInit = () => {
         
     });
 
-    videoProgress.addEventListener('change', () => {
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
 
         videoPlayer.currentTime = (value * duration) / 100;
     });
 
+    videoFullScreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
+
+    videoVolume.addEventListener('input', () => {
+        videoPlayer.volume = videoVolume.value / 100;
+    });
+
+    
+    videoVolumeDown.addEventListener('click', toggleMute);
+    videoVolumeDown.addEventListener('click', toggleVolumeIcon);
+    
+    
+    videoVolume.value = videoPlayer.volume * 100;
+    
 };
