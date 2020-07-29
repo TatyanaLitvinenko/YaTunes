@@ -90,6 +90,9 @@ export const videoPlayerInit = () => {
 
     videoVolume.addEventListener('input', () => {
         videoPlayer.volume = videoVolume.value / 100;
+        if (videoPlayer.volume === 0) {
+            toggleVolumeIcon();
+        }
     });
 
     

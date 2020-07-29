@@ -77,6 +77,9 @@ export const radioPlayerInit = () => {
 
     radioVolume.addEventListener('input', () => {
         audio.volume = radioVolume.value / 100;
+        if (audio.volume === 0) {
+            toggleVolumeIcon();
+        }
     });
 
     
@@ -85,4 +88,6 @@ export const radioPlayerInit = () => {
     
     
     radioVolume.value = audio.volume * 100;
+    
+
 };
