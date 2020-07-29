@@ -8,3 +8,20 @@ html{-webkit-box-sizing:border-box;box-sizing:border-box}*,*::before,*::after{-w
 .video-volume {
     max-width: 100px;
 }
+
+.radio-stop {
+    margin-right: 20px;
+}
+
+.radio-volume {
+    max-width: 300px;
+    margin: 10px;
+}
+
+.radio-mute {
+    margin: 10px;
+    background-color: #0F1E36;
+    color: #ffffff;
+    border: none;
+    font-size: 40px;
+}
