@@ -13,12 +13,12 @@ html{-webkit-box-sizing:border-box;box-sizing:border-box}*,*::before,*::after{-w
     margin-right: 20px;
 }
 
-.radio-volume {
+.radio-volume, .audio-volume {
     max-width: 300px;
     margin: 10px;
 }
 
-.radio-mute {
+.radio-mute, .audio-mute {
     margin: 10px;
     background-color: #0F1E36;
     color: #ffffff;
